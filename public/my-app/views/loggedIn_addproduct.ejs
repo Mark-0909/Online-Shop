@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>E-TECH-addproduct</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width-device-width, initial-scale-1.0">
+</head>
+
+<body class="body">
+    <header class="center">
+        <img alt="logo" src="/images/logo.png" height="150px" width="200px">
+        <nav class="navbar">
+            <a href="/loggedIn_home/<%= userIdentifier %>">HOME</a>
+            <a href="/loggedIn_shop/<%= userIdentifier %>">SHOP</a>
+            <a href="/loggedIn_contacts/<%= userIdentifier %>">CONTACTS</a>
+            <a href="/loggedIn_track/<%= userIdentifier %>">TRACK</a>
+        </nav>
+
+        <form action="/loggedIn_search/<%= userIdentifier %>" method="GET">
+            <div class="field-group" style="margin-top: 18px;">
+                <input type="search" placeholder="Search here" name="query">
+                <button type="submit" style="border: none; background-color: white;">
+                <div class="searchicon">
+                    <i class='bx bx-search'></i>
+                    </div>
+                </button>
+            </div>
+        </form>
+        
+        <button class="btnCart-popup" onclick="window.location.href = '/loggedIn_addtocart/<%= userIdentifier %>';">
+            <div class="carticon">
+                <i class='bx bx-cart'></i>
+            </div>
+        </button>
+        <button class="btnLogin-popup" onclick="toggleDropDown()">
+            <div class="usericon">
+                <i class='bx bx-user-circle'></i>
+                <p><%= username %></p>
+            </div>
+        </button>
+    </header>
+    <div class="drop-down" id="drop-down" style="margin-top: -70px; margin-left: 900px;">
+        <a href="/loggedIn_orders/<%= userIdentifier %>">
+          <div class="view-profile">
+            <p>My Purchase <i class='bx bx-user'></i></p>
+          </div>
+        </a>
+        <a href="/logoutshop">
+          <div class="logout">
+            <p>Logout <i class='bx bx-power-off'></i></p>
+          </div>
+        </a>
+      </div>
+
+    <div class="product1">
+
+        <div class="headcap">
+            <a href="#" onclick="history.back()">
+                <i class='bx bx-left-arrow-alt'></i>
+            </a>
+            <p>Add Product</p>
+        </div>
+        <hr>
+        <br>
+        <form class="add-product" action="/loggedIn_shop/<%= userIdentifier %>" method="POST"
+            enctype="multipart/form-data">
+            <p>Product Details</p>
+            <div class="product-name">
+                <label>Item Name:</label>
+                <input type="text" name="product-name" placeholder="Type here..." required>
+            </div>
+            <div class="product-price">
+                <label>Price:</label>
+                <p>₱</p>
+                <input type="number" name="product-price" placeholder="Type here..." required>
+            </div>
+            <div class="product-type">
+                <input type="radio" name="product-type1" value="laptop" required>
+                <label>Laptop</label>
+                <input type="radio" name="product-type1" value="phone" required>
+                <label>Phone</label>
+                <input type="radio" name="product-type1" value="accessory" required>
+                <label>Accessory</label>
+            </div>
+            <div class="product-description">
+                <label>Description:</label>
+                <textarea name="product-description" id="product-description" cols="30" rows="10"
+                    placeholder="Type here..."></textarea>
+            </div>
+
+            <div class="product-variations">
+                <label>Variations:</label>
+                <div class="varTextInput">
+                  <input type="text" name="variations[0][name]" placeholder="Type here..." required>
+                  <input type="text" name="variations[1][name]" placeholder="Type here..." required>
+                  <input type="text" name="variations[2][name]" placeholder="Type here..." required>
+                </div>
+              </div>
+              
+
+
+
+            <div class="product-img">
+                <label>Product Images:</label>
+                <div class="imgInput">
+                    <input type="file" name="product-images" id="product-img1" accept="image/jpeg, image/png, image/jpg"
+                        required>
+                    <input type="file" name="product-images" id="product-img2" accept="image/jpeg, image/png, image/jpg"
+                        required>
+                    <input type="file" name="product-images" id="product-img3" accept="image/jpeg, image/png, image/jpg"
+                        required>
+                    <input type="file" name="product-images" id="product-img4" accept="image/jpeg, image/png, image/jpg"
+                        required>
+                        <label class="var_label">Variations Images:</label>
+                    <input type="file" name="product-images" id="product-img5" accept="image/jpeg, image/png, image/jpg"
+                        required>
+                    <input type="file" name="product-images" id="product-img6" accept="image/jpeg, image/png, image/jpg"
+                        required>
+                    <input type="file" name="product-images" id="product-img7" accept="image/jpeg, image/png, image/jpg"
+                        required>
+                </div>
+            </div>
+            <button type="submit" class="submitadd">Submit</button>
+        </form>
+
+        <br>
+        <footer class="footer">
+            <div class="footerproducts">
+            <p>Products: </p>
+            <a href="http://localhost:3000/loggedIn_laptops/<%= userIdentifier %>" style="margin-top: -10px;">Laptops</a>
+            <a href="http://localhost:3000/loggedIn_phones/<%= userIdentifier %>">Phones</a>
+            <a href="http://localhost:3000/loggedIn_accessories/<%= userIdentifier %>">Accessories</a>
+        </div>
+        <div class="footercontacts">
+            <p>Follow us: </p>
+            <div class="contactusfooter">
+                <button><a href="https://www.facebook.com/mark.orcullo.1" target="_blank"><i class='bx bxl-facebook-circle'></i></a></button>
+                <button><a href="https://www.instagram.com/greasygab/" target="_blank"><i class='bx bxl-instagram' ></i></a></button>
+                <button><a href="/loggedIn_contacts/<%= userIdentifier %>"><i class='bx bxl-gmail' target="_blank"></i></a></button>
+            </div>
+        </div>
+    
+        <div class="footeroffice">
+            <p style="font-size:25px;">Office: </p>
+            <p style="font-size:18px; margin-top: -20px;">Cavite State University Silang Campus</p>
+        </div>
+        <div class="footerfeatured">
+            <p>Featured: </p>
+            <div class="featured1">
+                <a href="http://localhost:3000/loggedIn_prod1/<%= userIdentifier %>/6490eccc019884d4c285a283">POCO X5 5G</a>
+                <a href="http://localhost:3000/loggedIn_prod1/<%= userIdentifier %>/6490f6df019884d4c285a416">IPhone 14 Pro 256gb</a>
+                <a href="http://localhost:3000/loggedIn_prod1/<%= userIdentifier %>/6491054d019884d4c285a6dc">IPhone 14 Pro Max</a>
+                <a href="http://localhost:3000/loggedIn_prod1/<%= userIdentifier %>/648fec4d13f16b5b37b5d945">MagSafe</a>
+                <a href="http://localhost:3000/loggedIn_prod1/<%= userIdentifier %>/648fe38b61c437f1ab47e01c">POCO F5 Pro</a>
+                <a href="http://localhost:3000/loggedIn_prod1/<%= userIdentifier %>/6490f4ff019884d4c285a3c0">MacBook Air 15"</a>
+                <a href="http://localhost:3000/loggedIn_prod1/<%= userIdentifier %>/648fe95b13f16b5b37b5d92e">Airpods Max</a>
+            </div>
+            <div class="featured2">
+                <a href="http://localhost:3000/loggedIn_prod1/<%= userIdentifier %>/6490f9c8019884d4c285a48f">MagicMouse</a>
+                <a href="http://localhost:3000/loggedIn_prod1/<%= userIdentifier %>/6490faef019884d4c285a4c0">MagicKeyboard</a>
+                <a href="http://localhost:3000/loggedIn_prod1/<%= userIdentifier %>/648fd9e05e9e8b70a69f3288">POCO F5</a>
+            </div>
+        </div>
+        <div class="footerroutes">
+            <p>Routes: </p>
+            <a href="http://localhost:3000/loggedIn_home/<%= userIdentifier %>" style="margin-top: -15px;"><i class='bx bxs-home' ></i>Home</a>
+            <a href="http://localhost:3000/loggedIn_shop/<%= userIdentifier %>"><i class='bx bx-shopping-bag' ></i>Shop</a>
+            <a href="http://localhost:3000/loggedIn_contacts/<%= userIdentifier %>"><i class='bx bxs-contact' ></i>Contacts</a>
+            <a href="http://localhost:3000/loggedIn_track/<%= userIdentifier %>"><i class='bx bx-info-circle' ></i>Track</a>
+        </div>
+        </footer>
+        <script src="/js/shop.js"></script>
+        <script src="/js/login.js"></script>
+        <script src="/js/server.js"></script>
+
+</body>
+
+</html>

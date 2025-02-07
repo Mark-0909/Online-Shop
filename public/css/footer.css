@@ -1,0 +1,75 @@
+/*FOOTER START*/
+.footer{
+    background-color: #0C134F;
+    width: 143.5%;
+    height: 500px;
+    margin-left: -225px;
+    justify-content: center;
+}
+.footer a{
+    text-decoration: none;
+    color:white;
+}
+.footer a{
+    margin-top: 10px;
+    font-size: 18px;
+}
+.footer p{
+    font-size: 27px;
+    color: white;
+    
+}
+.footer .footerproducts{
+    display: flex;
+    flex-direction: column;
+    width: 73%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-left: 275px;
+}
+.footerproducts p {
+    margin-top: 100px;
+}
+.contactusfooter {
+    margin-top: -30px;
+}
+.footercontacts {
+    margin-left: 275px;
+}
+.contactusfooter button{
+    color:white;
+    background-color: #0C134F;
+    border:none;
+    border-radius: 50%;
+    font-size: 35px;
+}
+.footeroffice {
+    margin-top:-200px;
+    width: 200px;
+    margin-left: 425px;
+}
+.featured1 {
+    display: flex;
+    flex-direction: column;
+    margin-top: -20px;
+}
+.featured2 {
+    display: flex;
+    flex-direction: column;
+    margin-top: -215px;
+    margin-left: 180px;
+}
+.footerfeatured {
+    margin-top: -153px;
+    margin-left: 675px;
+}
+.footerroutes {
+    display: flex;
+    flex-direction: column;
+    margin-top: -150px;
+    margin-left: 1000px;
+}
+.footerroutes i{
+    padding-right: 10px;
+}
+/*FOOTER END*/

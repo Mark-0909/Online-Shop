@@ -1,0 +1,201 @@
+
+
+.wrapper {
+    margin: 0 auto;
+    width: 400px;
+    height: 440px;
+    position: fixed;
+    background: white;
+    border: 2px solid;
+    border-color: rgba(59, 56, 56, 0.5);
+    border-radius: 20px;
+    backdrop-filter: blur(40px);
+    box-shadow: 0 0 20000px rgba(0, 0, 0, .5);
+    display: flex;
+    align-items: center;
+    transition: height .2s ease;
+    transform: scale(0);
+    transform: .5s ease;
+    overflow: hidden;
+    z-index: 999;
+}
+.wrapper.active-popup {
+    transform: scale(1);
+}
+.wrapper .form-box {
+    padding-left: 70px;
+}
+.wrapper.active {
+    height: 500px;
+    overflow-y: auto;
+}
+
+.wrapper .form-box.login {
+    transition: transform .18s ease;
+    transform: translateX(0px);
+}
+.wrapper.active .form-box.login{
+    transition: none;
+    transform: translateX(-400px);
+}
+.wrapper .form-box.register {
+    position: absolute;
+    transition: transform .18s ease;
+    transform: translateX(400px);
+}
+.wrapper.active .form-box.register {
+    transition: transform .18s ease;
+    transform: translateX(0);
+}
+.form-box h2 {
+    font-size: 2em;
+    color: #162938;
+    text-align: center;
+}
+.input-box {
+    margin-top: -10px;
+    position: relative;
+    padding-top: 20px;
+    width: 260px;
+    height: 50px;
+    border-bottom: 2px solid #162938;
+}
+.input-box label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transition: translateY(-60%);
+    font-size: 1em;
+    color: #162938;
+    transition: .5s;
+}
+.input-box input {
+    margin-top: 0px;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 15px;
+    padding-left: 5px;
+}
+input[type="password"]{
+    width: 225px;
+}
+input[type="email"]{
+    width: 225px;
+}
+.input-box .loginicon {
+    position: absolute;
+    right: 8px;
+    font-size: 20px;
+    color: #162938;
+    line-height: 55px;
+}
+.input-box input:focus~label, 
+.input-box input:valid~label {
+    top: 10px; 
+}
+.submitbtn {
+    width: 100%;
+    height: 45px;
+    margin-top: 20px;
+    border: none;
+    background: #162938;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.2em;
+    color: white;
+    font-weight: bold;
+}
+.login-register {
+    font-size: 1em;
+    color: #162938;
+    text-align: center;
+    margin: -10px 0 10px;
+}
+.login-register p a {
+    color: #162938;
+    text-decoration: none;
+    font-weight: 600;
+}
+.login-register p a:hover {
+    text-decoration: underline;
+}
+.wrapper .icon-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 45px;
+    height: 45px;
+    background: #162938;
+    color: white;
+    font-size: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 20px;
+    cursor: pointer;
+    z-index: 1;
+}
+.wrapper .icon-close1 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 45px;
+    height: 45px;
+    background: #162938;
+    color: white;
+    font-size: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 20px;
+    cursor: pointer;
+    z-index: 1;
+}
+.after-register {
+    margin: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 440px;
+    border: 3px solid black;
+    border-radius: 20px;
+    z-index: 999;
+    position: fixed;
+    background-color: white;
+    box-shadow: 0 0 20000px rgba(0, 0, 0, .5);
+}
+.after-register i {
+    color: #162938;
+    font-size: 150px;
+    margin-top: -100px;
+    background-color: white;
+    border-radius: 50%;
+    justify-content: center;
+}
+.after-register p {
+    padding-top: 50px;
+    font-size: 30px;
+    justify-content: center;
+}
+.after-register button {
+    margin-top: 100px;
+    border: 2px solid black;
+    height: 50px;
+    width: 200px;
+    border-radius: 10px;
+    background-color: #162938;
+    justify-content: center;
+}
+.after-register a{
+   font-size: 20px;
+   color: white;
+   text-decoration: none;
+   justify-content: center;
+}

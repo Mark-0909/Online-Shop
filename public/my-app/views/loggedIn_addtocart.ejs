@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>E-TECH-cart</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/login.css">
+  <link rel="stylesheet" href="/css/footer.css">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <meta name="viewport" content="width-device-width, initial-scale-1.0">
+</head>
+
+<body class="body">
+  <header class="center">
+      <img alt="logo" src="/images/logo.png" height="150px" width="200px">
+      <nav class="navbar">
+          <a href="/loggedIn_home/<%= userIdentifier %>">HOME</a>
+          <a href="/loggedIn_shop/<%= userIdentifier %>">SHOP</a>
+          <a href="/loggedIn_contacts/<%= userIdentifier %>">CONTACTS</a>
+          <a href="/loggedIn_track/<%= userIdentifier %>">TRACK</a>
+      </nav>
+
+      <form action="/loggedIn_search/<%= userIdentifier %>" method="GET">
+          <div class="field-group" style="margin-top: 18px;">
+              <input type="search" placeholder="Search here" name="query">
+              <button type="submit" style="border: none; background-color: white;">
+              <div class="searchicon">
+                  <i class='bx bx-search'></i>
+                  </div>
+              </button>
+          </div>
+      </form>
+      
+      <button class="btnCart-popup" onclick="window.location.href = '/loggedIn_addtocart/<%= userIdentifier %>';">
+          <div class="carticon">
+              <i class='bx bx-cart'></i>
+          </div>
+      </button>
+      <button class="btnLogin-popup" onclick="toggleDropDown()">
+          <div class="usericon">
+              <i class='bx bx-user-circle'></i>
+              <p><%= username %></p>
+          </div>
+      </button>
+  </header>
+  <div class="drop-down" id="drop-down" style="margin-top: -70px; margin-left: 900px;">
+      <a href="/loggedIn_orders">
+        <div class="view-profile">
+          <p>My Purchase <i class='bx bx-user'></i></p>
+        </div>
+      </a>
+      <a href="/logouthome">
+        <div class="logout">
+          <p>Logout <i class='bx bx-power-off'></i></p>
+        </div>
+      </a>
+    </div>
+
+
+  <div class="product1">
+    <div class="headcap">
+      <a href="#" onclick="history.back()">
+        <i class='bx bx-left-arrow-alt'></i>
+      </a>
+      <p>My Cart</p>
+    </div>
+    <hr>
+    <br>
+    <div class="hederer">
+      <p style="margin-left: 180px;">Product</p>
+      <p style="margin-left: 210px;">|</p>
+      <p style="margin-left: 30px;">Type & Quantity</p>
+      <p style="margin-left: 28px;">|</p>
+      <p style="margin-left: 60px;">Total</p>
+
+    </div>
+    <hr style="margin-top: -10px;">
+
+
+
+    <div class="successRemove" style="display: none; position: fixed; margin-top: 300px;">
+      <i class='bx bx-check-circle'></i>
+      <p>The item was removed.</p>
+    </div>
+
+
+    <form id="placeOrderForm" action="/loggedIn_addtocart/<%= userIdentifier %>" method="POST" style="margin-top: 20px;">
+      <input type="hidden" name="userId" value="<%= userId %>">
+    
+      <div class="delivDetails" style="display: none;">
+        <div class="closeDelivform">
+          <button class="closedelivFormBTN">
+            <i class='bx bx-window-close'></i>
+          </button>
+        </div>
+        <div class="titleNgdelivery">
+          <p>Delivery Details</p>
+        </div>
+        <div class="userinfo">
+          <div class="custName">
+            <label for="name">Name: </label>
+            <input type="text" name="name" placeholder="Type here..." required>
+          </div>
+          <div class="custNum">
+            <label for="telno">Telephone no.: </label>
+            <input type="tel" name="telno" placeholder="Type here..." required>
+          </div>
+          <div class="custRegion">
+            <label for="region">Region</label>
+            <select name="region" id="">
+              <option value="75">Luzon</option>
+              <option value="100">Visayas</option>
+              <option value="150">Mindanao</option>
+            </select>
+          </div>
+          <div class="province">
+            <label for="province">Province: </label>
+            <input type="text" name="province" placeholder="Type here..." required>
+          </div>
+          <div class="municipality">
+            <label for="municipality">Municipality: </label>
+            <input type="text" name="municipality" placeholder="Type here..." required>
+          </div>
+          <div class="barangay">
+            <label for="barangay">Barangay: </label>
+            <input type="text" name="barangay" placeholder="Type here..." required>
+          </div>
+          <div class="completeAdd">
+            <label for="address">Address: </label>
+            <textarea name="address" id="" cols="30" rows="10" placeholder="Type here..."></textarea>
+          </div>
+          <div class="submitDelDetBTN">
+            <button type="submit">Submit</button>
+          </div>
+          <div class="totalofeverything">
+            <div class="totalwithoutshipping">
+              <p>₱ 0</p>
+            </div>
+            <div class="shippingfee">
+              <p>Shipping fee:</p>
+              <p class="SFee">₱ 75</p>
+            </div>
+            <hr>
+            <div class="totalwithshipping">
+              <p>Total:</p>
+              <p class="ovalltot">₱ 0</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <div class="placeOrder" style="display: none;">
+        <div class="katotalan">
+          <div class="totalkase">
+            <p class="totallll">T</p>
+            <p>O</p>
+            <p>T</p>
+            <p>A</p>
+            <p>L</p>
+          </div>
+        </div>
+        <p id="totalPrice">₱ 0</p>
+        <button type="submit" class="placeOrderButton">Place order</button>
+      </div>
+    
+      <% const filteredCartItems = cartItems.filter((cartItem) => cartItem.userId === userId); %>
+      <% if (filteredCartItems.length === 0) { %>
+      <div class="noItem">
+        <p>No item added yet</p>
+        <a href="/loggedIn_shop/<%= userIdentifier %>">Go to Products</a>
+        <br><br><br><br><br><br><br><br><br><br><br><br>
+      </div>
+      <% } else { %>
+      <% filteredCartItems.forEach((cartItem) => { %>
+      <% const product = products.find((p) => p._id.toString() === cartItem.productId.toString()); %>
+      <div class="items cart-item" id="cartItemContainer_<%= cartItem._id %>">
+        <input type="checkbox" name="cartCheckbox[]" value="<%= cartItem._id %>" id="addeditem_<%= cartItem._id %>" onchange="toggleItemSelection('<%= cartItem._id %>')">
+        <label for="addeditem_<%= cartItem._id %>">
+          <img class="pictureniya" src="/<%= product.productImages[0] %>">
+          <p class="titleNgProduct">
+            <a href="/loggedIn_prod1/<%= userIdentifier %>/<%= product._id %>"><%= product.productName %></a>
+          </p>
+          <img class="kulayniya" src="/<%= product.productImages[cartItem.selectedOption + 3] %>" alt="">
+          <p id="bilangngproduct"> X <%= cartItem.quantity %></p>
+          <p class="presyoNgProduct">₱ <%= product.productPrice * cartItem.quantity %></p>
+          <a class="removeBTN" href="javascript:void(0)" onclick="deleteCartItem('<%= cartItem._id %>')">
+            <i class='bx bx-trash'></i>
+          </a>
+          <input type="hidden" name="cartItem[]" value="<%= cartItem._id %>">
+        </label>
+      </div>
+      <% }) %>
+      <% } %>
+    
+      <div class="clear">
+        <button class="clearBtn" style="display: none;">Clear Selection</button>
+      </div>
+    </form>
+    
+<br>
+<footer class="footer">
+  <div class="footerproducts">
+  <p>Products: </p>
+  <a href="http://localhost:3000/loggedIn_laptops/<%= userIdentifier %>" style="margin-top: -10px;">Laptops</a>
+  <a href="http://localhost:3000/loggedIn_phones/<%= userIdentifier %>">Phones</a>
+  <a href="http://localhost:3000/loggedIn_accessories/<%= userIdentifier %>">Accessories</a>
+</div>
+<div class="footercontacts">
+  <p>Follow us: </p>
+  <div class="contactusfooter">
+      <button><a href="https://www.facebook.com/mark.orcullo.1" target="_blank"><i class='bx bxl-facebook-circle'></i></a></button>
+      <button><a href="https://www.instagram.com/greasygab/" target="_blank"><i class='bx bxl-instagram' ></i></a></button>
+      <button><a href="/loggedIn_contacts/<%= userIdentifier %>"><i class='bx bxl-gmail' target="_blank"></i></a></button>
+  </div>
+</div>
+<div class="footeroffice">
+  <p style="font-size:25px;">Office: </p>
+  <p style="font-size:18px; margin-top: -20px;">Cavite State University Silang Campus</p>
+</div>
+<div class="footerfeatured">
+  <p>Featured: </p>
+  <div class="featured1">
+      <a href="http://localhost:3000/loggedIn_prod1/<%= userIdentifier %>/6490eccc019884d4c285a283">POCO X5 5G</a>
+      <a href="http://localhost:3000/loggedIn_prod1/<%= userIdentifier %>/6490f6df019884d4c285a416">IPhone 14 Pro 256gb</a>
+      <a href="http://localhost:3000/loggedIn_prod1/<%= userIdentifier %>/6491054d019884d4c285a6dc">IPhone 14 Pro Max</a>
+      <a href="http://localhost:3000/loggedIn_prod1/<%= userIdentifier %>/648fec4d13f16b5b37b5d945">MagSafe</a>
+      <a href="http://localhost:3000/loggedIn_prod1/<%= userIdentifier %>/648fe38b61c437f1ab47e01c">POCO F5 Pro</a>
+      <a href="http://localhost:3000/loggedIn_prod1/<%= userIdentifier %>/6490f4ff019884d4c285a3c0">MacBook Air 15"</a>
+      <a href="http://localhost:3000/loggedIn_prod1/<%= userIdentifier %>/648fe95b13f16b5b37b5d92e">Airpods Max</a>
+  </div>
+  <div class="featured2">
+      <a href="http://localhost:3000/loggedIn_prod1/<%= userIdentifier %>/6490f9c8019884d4c285a48f">MagicMouse</a>
+      <a href="http://localhost:3000/loggedIn_prod1/<%= userIdentifier %>/6490faef019884d4c285a4c0">MagicKeyboard</a>
+      <a href="http://localhost:3000/loggedIn_prod1/<%= userIdentifier %>/648fd9e05e9e8b70a69f3288">POCO F5</a>
+  </div>
+</div>
+<div class="footerroutes">
+  <p>Routes: </p>
+  <a href="http://localhost:3000/loggedIn_home/<%= userIdentifier %>" style="margin-top: -15px;"><i class='bx bxs-home' ></i>Home</a>
+  <a href="http://localhost:3000/loggedIn_shop/<%= userIdentifier %>"><i class='bx bx-shopping-bag' ></i>Shop</a>
+  <a href="http://localhost:3000/loggedIn_contacts/<%= userIdentifier %>"><i class='bx bxs-contact' ></i>Contacts</a>
+  <a href="http://localhost:3000/loggedIn_track/<%= userIdentifier %>"><i class='bx bx-info-circle' ></i>Track</a>
+</div>
+</footer>
+
+  </div>
+
+
+
+
+
+  <script src="/js/addtocart.js"></script>
+
+  <script src="/js/server.js"></script>
+
+</body>
+
+</html>

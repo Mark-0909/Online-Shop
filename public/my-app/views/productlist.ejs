@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>E-TECH-home</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/login.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width-device-width, initial-scale-1.0">
+</head>
+
+<body class="body">
+    <p class="shopcap">More Items:</p>
+    <div class="row">
+        <div id="productContainer">
+            <% if (products.length > 0) {
+              // Randomize the order of the products
+              const randomizedProducts = products.sort(() => Math.random() - 0.5);
+          
+              const displayedProducts = randomizedProducts.slice(0, 6); // Limit the display to six products
+              
+              displayedProducts.forEach((product) => { %>
+                <a href="/prod1/<%= product._id %>">
+                  <div class="column">
+                    <img src="/<%= product.productImages[0] %>" height="260px" width="283px">
+                    <p><%= product.productName %></p>
+                    <p>₱ <%= product.productPrice %></p>
+                    <div class="rating">
+                      <i class='bx bxs-star'></i>
+                      <i class='bx bxs-star'></i>
+                      <i class='bx bxs-star'></i>
+                      <i class='bx bxs-star'></i>
+                      <i class='bx bxs-star'></i>
+                      <p>5.0</p>
+                    </div>
+                  </div>
+                </a>
+            <% });
+            } %>
+        </div>
+    </div>
+
+    <script src="/js/shop.js"></script>
+    <script src="/js/login.js"></script>
+    <script src="/js/server.js"></script>
+
+</body>
+
+</html>

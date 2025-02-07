@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>E-TECH-<%= product.productName %></title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/logggedIn.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+</head>
+
+<body class="body">
+    <header class="center">
+        <img alt="logo" src="/images/logo.png" height="150px" width="200px">
+        <nav class="navbar">
+            <a href="/loggedIn_home/<%= userIdentifier %>">HOME</a>
+            <a href="/loggedIn_shop/<%= userIdentifier %>">SHOP</a>
+            <a href="/loggedIn_contacts/<%= userIdentifier %>">CONTACTS</a>
+            <a href="/loggedIn_track/<%= userIdentifier %>">TRACK</a>
+        </nav>
+        <br><br><br><br>
+        <form action="/loggedIn_search/<%= userIdentifier %>" method="GET">
+          <div class="field-group" style="margin-top: 18px;">
+              <input type="search" placeholder="Search here" name="query">
+              <button type="submit" style="border: none; background-color: white;">
+              <div class="searchicon">
+                  <i class='bx bx-search'></i>
+                  </div>
+              </button>
+          </div>
+      </form>
+        </div>
+
+        <button class="btnCart-popup" onclick="window.location.href = '/loggedIn_addtocart/<%= userIdentifier %>';">
+            <div class="carticon">
+                <i class='bx bx-cart'></i>
+            </div>
+        </button>
+        <button class="btnLogin-popup" onclick="toggleDropDown()">
+            <div class="usericon">
+              <i class='bx bx-user-circle'></i>
+              <p><%= username %></p>
+            </div>
+          </button>
+          </header>
+          <div class="drop-down" id="drop-down" style="margin-top: -70px; margin-left: 900px;">
+            <a href="/loggedIn_orders/<%= userIdentifier %>">
+              <div class="view-profile">
+                <p>My Purchase <i class='bx bx-user'></i></p>
+              </div>
+            </a>
+            <a href="/logoutprod1/<%= product._id %>">
+              <div class="logout">
+                <p>Logout <i class='bx bx-power-off'></i></p>
+              </div>
+            </a>
+          </div>
+
+
+          <form id="buyNowForm" class="buynowform" style="display: none;" action="/loggedIn_prod1/<%= userIdentifier %>/<%= product._id %>" method="POST">
+            <div class="prodvar2" style="margin-top: 125px;">
+                <a href="#" id="closeButton" onclick="hideBuyNowForm()"><i class='bx bx-x'></i></a>
+                <div class="prodvar">
+                    <div class="prodvarimg">
+                        <img src="/<%= product.productImages[0] %>" alt="">
+                    </div>
+                    <div class="prodvarinfo">
+                        <p><%= product.productName %></p>
+                        <p>₱ <%= product.productPrice %></p>
+                    </div>
+                </div>
+                <hr> 
+                <p>Color Family: </p>
+                <div class="variations">
+                    <input type="radio" name="varies1" value="1" id="var1" checked="checked">
+                    <label for="var1">
+                      <div class="var 1">
+                        <img src="/<%= product.productImages[4] %>">
+                        <p><%= product.variations[0].name %></p>
+                      </div>
+                    </label>
+                    <input type="radio" name="varies1" id="var2" value="2">
+                    <label for="var2">
+                      <div class="var 2">
+                        <img src="/<%= product.productImages[5] %>">
+                        <p><%= product.variations[1].name %></p>
+                      </div>
+                    </label>
+                    <input type="radio" name="varies1" value="3" id="var3">
+                    <label for="var3">
+                      <div class="var 3">
+                        <img src="/<%= product.productImages[6] %>">
+                        <p><%= product.variations[2].name %></p>
+                      </div>
+                    </label>
+                   
+                    <p class="QuantityP" style="margin-left: 180px;">Quantity: </p>
+                    <input class="inputnum" name="inputnum" type="number" min="1" value="1" name="quantity" required>
+
+                </div>
+                <button type="submit">Add to cart</button>
+            </div>
+        </form>
+
+
+
+
+        
+
+
+
+
+
+        
+        <div class="product1">
+            <div class="headcap">
+                <a href="#" onclick="history.back()">
+                    <i class='bx bx-left-arrow-alt'></i>
+                </a>
+                <p><%= product.productName %></p>
+            </div>
+            <hr>
+            <br>
+            <div class="markslides-container">
+                <div class="markslides-prod1" class="active">
+                    <img class="prodImg1" src="/<%= product.productImages[0] %>">
+                    <img class="prodImg2"  src="/<%= product.productImages[1] %>">
+                    <img class="prodImg3" src="/<%= product.productImages[2] %>">
+                    <img class="prodImg4" src="/<%= product.productImages[3] %>">
+                </div>
+                <div class="markbtn">
+                    <span class="next"><i class='bx bxs-chevron-right' ></i></span>
+                    <span class="prev"><i class='bx bxs-chevron-left'></i></span>
+                </div>
+                <div class="markdotsContainer">
+                    <div class="dot" attr='0'></div>
+                    <div class="dot" attr='1'></div>
+                    <div class="dot" attr='2'></div>
+                    <div class="dot" attr='3'></div>
+                </div>
+            </div>
+                <section class="prodinfo">
+                    <p><%= product.productName %></p>
+                    <p>₱ <%= product.productPrice %></p>
+                    <div class="rating">
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <p>5.0</p>
+
+                        
+                    </div>
+                    <div class="get-product">
+                            <button id="addToCartButton" class="add-cart-popup" onclick="showBuyNowForm()"><i class='bx bxs-cart-add' ></i></button>
+                            <button id="buyNowButton" class="buy-now-popup" onclick="window.location.href = '/loggedIn_buynow/<%= userIdentifier %>/<%= product._id %>'">
+                              <p>Buy Now</p>
+                            </button>
+
+                        </div>
+                </section>
+            </div>
+        <br>
+       
+        
+        <div class="proddes">
+        <hr>
+        <br>
+            <p>Description:</p>
+            <p><%= product.productDescription %></p>
+            <img src="/<%= product.productImages[2] %>" height="700px" width="965px">
+            <img src="/<%= product.productImages[3] %>" height="700px" width="965px">
+        </div>
+    </div>  
+
+    <br>
+    <footer class="footer">
+      <div class="footerproducts">
+      <p>Products: </p>
+      <a href="http://localhost:3000/loggedIn_laptops/<%= userIdentifier %>" style="margin-top: -10px;">Laptops</a>
+      <a href="http://localhost:3000/loggedIn_phones/<%= userIdentifier %>">Phones</a>
+      <a href="http://localhost:3000/loggedIn_accessories/<%= userIdentifier %>">Accessories</a>
+  </div>
+  <div class="footercontacts">
+    <p>Follow us: </p>
+    <div class="contactusfooter">
+        <button><a href="https://www.facebook.com/mark.orcullo.1" target="_blank"><i class='bx bxl-facebook-circle'></i></a></button>
+        <button><a href="https://www.instagram.com/greasygab/" target="_blank"><i class='bx bxl-instagram' ></i></a></button>
+        <button><a href="/loggedIn_contacts/<%= userIdentifier %>"><i class='bx bxl-gmail' target="_blank"></i></a></button>
+    </div>
+</div>
+
+  <div class="footeroffice">
+      <p style="font-size:25px;">Office: </p>
+      <p style="font-size:18px; margin-top: -20px;">Cavite State University Silang Campus</p>
+  </div>
+  <div class="footerfeatured">
+      <p>Featured: </p>
+      <div class="featured1">
+          <a href="http://localhost:3000/loggedIn_prod1/<%= userIdentifier %>/6490eccc019884d4c285a283">POCO X5 5G</a>
+          <a href="http://localhost:3000/loggedIn_prod1/<%= userIdentifier %>/6490f6df019884d4c285a416">IPhone 14 Pro 256gb</a>
+          <a href="http://localhost:3000/loggedIn_prod1/<%= userIdentifier %>/6491054d019884d4c285a6dc">IPhone 14 Pro Max</a>
+          <a href="http://localhost:3000/loggedIn_prod1/<%= userIdentifier %>/648fec4d13f16b5b37b5d945">MagSafe</a>
+          <a href="http://localhost:3000/loggedIn_prod1/<%= userIdentifier %>/648fe38b61c437f1ab47e01c">POCO F5 Pro</a>
+          <a href="http://localhost:3000/loggedIn_prod1/<%= userIdentifier %>/6490f4ff019884d4c285a3c0">MacBook Air 15"</a>
+          <a href="http://localhost:3000/loggedIn_prod1/<%= userIdentifier %>/648fe95b13f16b5b37b5d92e">Airpods Max</a>
+      </div>
+      <div class="featured2">
+          <a href="http://localhost:3000/loggedIn_prod1/<%= userIdentifier %>/6490f9c8019884d4c285a48f">MagicMouse</a>
+          <a href="http://localhost:3000/loggedIn_prod1/<%= userIdentifier %>/6490faef019884d4c285a4c0">MagicKeyboard</a>
+          <a href="http://localhost:3000/loggedIn_prod1/<%= userIdentifier %>/648fd9e05e9e8b70a69f3288">POCO F5</a>
+      </div>
+  </div>
+  <div class="footerroutes">
+      <p>Routes: </p>
+      <a href="http://localhost:3000/loggedIn_home/<%= userIdentifier %>" style="margin-top: -15px;"><i class='bx bxs-home' ></i>Home</a>
+      <a href="http://localhost:3000/loggedIn_shop/<%= userIdentifier %>"><i class='bx bx-shopping-bag' ></i>Shop</a>
+      <a href="http://localhost:3000/loggedIn_contacts/<%= userIdentifier %>"><i class='bx bxs-contact' ></i>Contacts</a>
+  <a href="http://localhost:3000/loggedIn_track/<%= userIdentifier %>"><i class='bx bx-info-circle' ></i>Track</a>
+  </div>
+  </footer>
+
+
+    <script src="/js/prod1.js"></script>
+    <script src="/js/login.js"></script>
+    <script src="/js/server.js"></script>
+  
+
+
+</body>
+
+</html>

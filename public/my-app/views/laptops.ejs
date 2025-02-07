@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>E-TECH-laptops</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/login.css">
+    <link rel="stylesheet" href="/css/footer.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width-device-width, initial-scale-1.0">
+</head>
+
+<body class="body">
+    <header class="center">
+        <img alt="logo" src="/images/logo.png" height="150px" width="200px">
+        <nav class="navbar">
+            <a href="/">HOME</a>
+            <a href="/shop">SHOP</a>
+            <a href="/contacts">CONTACTS</a>
+            <a href="/track">TRACK</a>
+        </nav>
+
+        <form action="/search" method="GET">
+        <div class="field-group" style="margin-top: 18px;">
+            <input type="search" placeholder="Search here" name="query">
+            <button type="submit" style="border: none; background-color: white;">
+            <div class="searchicon">
+                <i class='bx bx-search'></i>
+                </div>
+            </button>
+        </div>
+    </form>
+        <button class="btnCart-popup">
+            <div class="carticon">
+                <i class='bx bx-cart'></i>
+            </div>
+        </button>
+        <button class="btnLogin-popup">
+            <div class="usericon">
+                <i class='bx bx-user-circle'></i>
+            </div>
+        </button>
+    </header>
+    
+    <div class="wrapper" style="margin-left: 300px;">
+        <span class="icon-close">
+            <i class='bx bx-x'></i>
+        </span>
+        <div class="form-box login">
+            <h2>Login</h2>
+            <form action="/loginshop" method="post">
+                <div class="input-box">
+                    <span class="loginicon"><i class='bx bxs-envelope'></i></i></span>
+                    <input type="email" name="email" required>
+                    <label>Email</label>
+                </div>
+                <div class="input-box">
+                    <span class="loginicon"><i class='bx bxs-lock-alt'></i></span>
+                    <input type="password" name="password" required>
+                    <label>Password</label>
+                </div>
+                <button type="submit" class="submitbtn">Login</button>
+                <br><br>
+                <div class="login-register">
+                    <p>Don't have an account? <a href="#" class="register-link">Register</a></p>
+                </div>
+            </form>
+        </div>
+        <div class="form-box register">
+            <h2>Registration</h2>
+            <form id="registration-form" action="/registershop" method="post">
+                <div class="input-box">
+                    <span class="loginicon"><i class='bx bxs-user'></i></span>
+                    <input type="text" name="username" required>
+                    <label>Username</label>
+                </div>
+                <div class="input-box">
+                    <span class="loginicon"><i class='bx bxs-envelope'></i></span>
+                    <input type="email" name="email" required>
+                    <label>Email</label>
+                </div>
+                <div class="input-box">
+                    <span class="loginicon"><i class='bx bxs-lock-alt'></i></span>
+                    <input type="password" name="password" required>
+                    <label>Password</label>
+                </div>
+                <button type="submit" class="submitbtn">Submit</button>
+                <br><br>
+                <div class="login-register">
+                    <p>Already have an account? <a href="#" class="login-link">Login</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <section class="prodcat">
+        <a href="/laptops">
+            <div class="laptop">
+                <i class='bx bx-laptop'></i>
+                <p>Laptops</p>
+            </div>
+        </a>
+        <a href="/phones">
+            <div class="smartphones">
+                <i class='bx bxs-devices'></i>
+                <p>Phones</p>
+            </div>
+        </a>
+        <a href="/accessories">
+            <div class="accessories">
+                <i class='bx bx-mouse-alt'></i>
+                <p>Accessories</p>
+            </div>
+        </a>
+    </section>
+
+
+
+
+    <p class="shopcap">Laptops:</p>
+    <div class="row">
+        <div id="productContainer">
+            <% if (products.length > 0) {
+              // Randomize the order of the products
+              const randomizedProducts = products.sort(() => Math.random() - 0.5);
+          
+              randomizedProducts.forEach((product) => { %>
+                <a href="/prod1/<%= product._id %>">
+                  <div class="column">
+                    <img src="/<%= product.productImages[0] %>" height="260px" width="283px">
+                    <p><%= product.productName %></p>
+                    <p>₱ <%= product.productPrice %></p>
+                    <div class="rating">
+                      <i class='bx bxs-star'></i>
+                      <i class='bx bxs-star'></i>
+                      <i class='bx bxs-star'></i>
+                      <i class='bx bxs-star'></i>
+                      <i class='bx bxs-star'></i>
+                      <p>5.0</p>
+                    </div>
+                  </div>
+                </a>
+            <% });
+            } %>
+          </div>
+        </div>
+    </div>
+<br>
+
+
+
+
+<footer class="footer">
+    <div class="footerproducts">
+    <p>Products: </p>
+    <a href="http://localhost:3000/laptops" style="margin-top: -10px;">Laptops</a>
+    <a href="http://localhost:3000/phones">Phones</a>
+    <a href="http://localhost:3000/accessories">Accessories</a>
+</div>
+<div class="footercontacts">
+    <p>Follow us: </p>
+    <div class="contactusfooter">
+        <button><a href="https://www.facebook.com/mark.orcullo.1" target="_blank"><i class='bx bxl-facebook-circle'></i></a></button>
+        <button><a href="https://www.instagram.com/greasygab/" target="_blank"><i class='bx bxl-instagram' ></i></a></button>
+        <button><a href="/contacts"><i class='bx bxl-gmail' target="_blank"></i></a></button>
+    </div>
+</div>
+
+<div class="footeroffice">
+    <p style="font-size:25px;">Office: </p>
+    <p style="font-size:18px; margin-top: -20px;">Cavite State University Silang Campus</p>
+</div>
+<div class="footerfeatured">
+    <p>Featured: </p>
+    <div class="featured1">
+        <a href="http://localhost:3000/prod1/6490eccc019884d4c285a283">POCO X5 5G</a>
+        <a href="http://localhost:3000/prod1/6490f6df019884d4c285a416">IPhone 14 Pro 256gb</a>
+        <a href="http://localhost:3000/prod1/6491054d019884d4c285a6dc">IPhone 14 Pro Max</a>
+        <a href="http://localhost:3000/prod1/648fec4d13f16b5b37b5d945">MagSafe</a>
+        <a href="http://localhost:3000/prod1/648fe38b61c437f1ab47e01c">POCO F5 Pro</a>
+        <a href="http://localhost:3000/prod1/6490f4ff019884d4c285a3c0">MacBook Air 15"</a>
+        <a href="http://localhost:3000/prod1/648fe95b13f16b5b37b5d92e">Airpods Max</a>
+    </div>
+    <div class="featured2">
+        <a href="http://localhost:3000/prod1/6490f9c8019884d4c285a48f">MagicMouse</a>
+        <a href="http://localhost:3000/prod1/6490faef019884d4c285a4c0">MagicKeyboard</a>
+        <a href="http://localhost:3000/prod1/648fd9e05e9e8b70a69f3288">POCO F5</a>
+    </div>
+</div>
+<div class="footerroutes">
+    <p>Routes: </p>
+    <a href="http://localhost:3000/" style="margin-top: -15px;"><i class='bx bxs-home' ></i>Home</a>
+    <a href="http://localhost:3000/shop"><i class='bx bx-shopping-bag' ></i>Shop</a>
+    <a href="http://localhost:3000/contacts"><i class='bx bxs-contact' ></i>Contacts</a>
+    <a href="http://localhost:3000/track"><i class='bx bx-info-circle' ></i>Track</a>
+</div>
+</footer>
+
+
+
+
+
+    <script src="/js/shop.js"></script>
+    <script src="/js/login.js"></script>
+    <script src="/js/server.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>E-TECH-home</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/login.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Quicksand:wght@600&display=swap"
+        rel="stylesheet">
+    <meta name="viewport" content="width-device-width, initial-scale-1.0">
+</head>
+
+<body class="body">
+
+    <header class="center">
+        <img alt="logo" src="/images/logo.png" height="150px" width="200px">
+        <nav class="navbar">
+            <a href="/">HOME</a>
+            <a href="/shop">SHOP</a>
+            <a href="/contacts">CONTACTS</a>
+            <a href="/track">TRACK</a>
+        </nav>
+
+        <form action="/search" method="GET">
+            <div class="field-group" style="margin-top: 18px;">
+                <input type="search" placeholder="Search here" name="query">
+                <button type="submit" style="border: none; background-color: white;">
+                <div class="searchicon">
+                    <i class='bx bx-search'></i>
+                    </div>
+                </button>
+            </div>
+        </form>
+
+        <button class="btnCart-popup">
+            <div class="carticon">
+                <i class='bx bx-cart'></i>
+            </div>
+        </button>
+
+        <button class="btnLogin-popup">
+            <div class="usericon">
+                <i class='bx bx-user-circle'></i>
+                <p></p>
+            </div>
+        </button>
+    </header>
+   
+    
+    <div class="wrapper" style="margin-left: 300px;">
+        <span class="icon-close">
+            <i class='bx bx-x'></i>
+        </span>
+        <div class="form-box login">
+            <h2>Login</h2>
+            <form action="/loginhome" method="post">
+                <div class="input-box">
+                    <span class="loginicon"><i class='bx bxs-envelope'></i></i></span>
+                    <input type="email" name="email" required>
+                    <label>Email</label>
+                </div>
+                <div class="input-box">
+                    <span class="loginicon"><i class='bx bxs-lock-alt'></i></span>
+                    <input type="password" name="password" required>
+                    <label>Password</label>
+                </div>
+                <button type="submit" class="submitbtn">Login</button>
+                <br><br>
+                <div class="login-register">
+                    <p>Don't have an account? <a href="#" class="register-link">Register</a></p>
+                </div>
+            </form>
+        </div>
+        <div class="form-box register">
+            <h2>Registration</h2>
+            <form id="registration-form" action="/registerhome" method="post">
+                <div class="input-box">
+                    <span class="loginicon"><i class='bx bxs-user'></i></span>
+                    <input type="text" name="username" required>
+                    <label>Username</label>
+                </div>
+                <div class="input-box">
+                    <span class="loginicon"><i class='bx bxs-envelope'></i></span>
+                    <input type="email" name="email" required>
+                    <label>Email</label>
+                </div>
+                <div class="input-box">
+                    <span class="loginicon"><i class='bx bxs-lock-alt'></i></span>
+                    <input type="password" name="password" required>
+                    <label>Password</label>
+                </div>
+                <button type="submit" class="submitbtn">Submit</button>
+                <br><br>
+                <div class="login-register">
+                    <p>Already have an account? <a href="#" class="login-link">Login</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+   
+
+    <section class="slider">
+
+        <div class="slider-frame">
+            <div class="slider-images">
+                <div class="img-container">
+                    <p><span class="do">DO</span> <span class="more">MORE,</span></p>
+                    <p><span class="carry">CARRY</span> <span class="less">LESS</span></p>
+                    <p><span class="MacbookAir">MacBook Series</span></p>
+                    <a href="#">
+                        <div class="seebutton">
+                            <button class="see"><a href="Shop.html">See Product</a><i
+                                    class='bx bx-right-arrow-alt'></i></button>
+                        </div>
+                    </a>
+                    <img src="images/macbookAirM2.jpg" alt="Image 1">
+                </div>
+                <div class="img-container">
+                    <p><span class="unrival">Pro</span> <span class="unrival2">Beyond</span> <span
+                            class="unrival3">Pro</span></p>
+                    <img src="images/macbookAirM2.4.jpg" alt="Image 2">
+                    <a href="#">
+                        <div class="seebutton">
+                            <button class="see"><a href="Shop.html">See Product</a><i
+                                    class='bx bx-right-arrow-alt'></i></button>
+                        </div>
+                    </a>
+                </div>
+                <div class="img-container">
+                    <p><span class="seemless">Seemlessly</span> <span class="seemless2">thin.</span> <span
+                            class="seemless3">Literally</span></p>
+                    <img src="images/panelnew.jpg" alt="Image 3">
+                    <a href="#">
+                        <div class="seebutton">
+                            <button class="see"><a href="Shop.html">See Product</a><i
+                                    class='bx bx-right-arrow-alt'></i></button>
+                        </div>
+                    </a>
+                </div>
+                <div class="img-container">
+                    <p><span class=""></span></p>
+                    <img src="images/M2MaxSpec.jpg" alt="Image 4" style="opacity:60%;">
+                    <a href="#">
+                        <div class="seebutton">
+                            <button class="see"><a href="Shop.html">See Product</a><i
+                                    class='bx bx-right-arrow-alt'></i></button>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="slider-controls">
+                <button class="prev-btn">&lt;</button>
+                <button class="next-btn">&gt;</button>
+            </div>
+        </div>
+    </section>
+
+    <div class=prodlink id="prodlink">
+        <a href="#" class="prodbutton">Macbook</a>
+        <a href="#" class="prodbutton">Iphone</a>
+        <a href="#" class="prodbutton">Accessories</a>
+        <div id="navbar-placeholder"></div>
+    </div>
+    <div class="Featured">
+        <h2 class="itemFeatured">Best Deals</h2>
+    </div>
+
+    <div class="row">
+        <div id="productContainer">
+          <% if (products.length > 0) {
+            // Randomize the order of the products
+            const randomizedProducts = products.sort(() => Math.random() - 0.5);
+            
+            let counter = 0;
+            randomizedProducts.forEach((product) => {
+              if (counter < 6) { // Limit to 6 products
+                %>
+                <a href="/prod1/<%= product._id %>">
+                  <div class="column">
+                    <img src="/<%= product.productImages[0] %>" height="260px" width="283px">
+                    <p><%= product.productName %></p>
+                    <p>₱ <%= product.productPrice %></p>
+                    <div class="rating">
+                      <i class='bx bxs-star'></i>
+                      <i class='bx bxs-star'></i>
+                      <i class='bx bxs-star'></i>
+                      <i class='bx bxs-star'></i>
+                      <i class='bx bxs-star'></i>
+                      <p>5.0</p>
+                    </div>
+                  </div>
+                </a>
+                <% 
+                counter++;
+              }
+            });
+          } %>
+        </div>
+      </div>
+      
+      
+
+    
+
+    <script src="js/home.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/server.js"></script>
+
+    
+
+</body>
+
+</html>
